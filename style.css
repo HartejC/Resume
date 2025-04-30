@@ -1,82 +1,81 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ece9e6, #ffffff);
-    color: #333;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
     animation: fadeIn 1s ease-in;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-header {
+/* Hero Section */
+.hero {
     text-align: center;
-    padding: 40px;
-    background: #212121;
-    color: white;
-    animation: slideDown 1s ease-in;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.glow {
+    font-size: 3em;
+    font-weight: bold;
+    color: #0277bd;
+    text-shadow: 0 0 10px #0277bd, 0 0 20px #0277bd;
+    animation: glowEffect 1.5s infinite alternate;
 }
 
+@keyframes glowEffect {
+    from { text-shadow: 0 0 10px #0277bd; }
+    to { text-shadow: 0 0 20px #03a9f4; }
+}
+
+/* Sections */
 section {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     border-radius: 8px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
 }
 
-section:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+/* Reveal Animation */
+section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-h2 {
-    color: #0277bd;
-    position: relative;
-}
-
-h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: #0277bd;
-    margin: 5px auto;
-}
-
+/* Skills */
 ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 ul li {
-    background: #0277bd;
+    background: linear-gradient(to right, #0277bd, #03a9f4);
     color: white;
-    padding: 10px;
-    margin: 5px 0;
-    display: inline-block;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease-in-out;
 }
 
 ul li:hover {
-    background: #01579b;
+    transform: scale(1.1);
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #212121;
-    color: white;
-    animation: fadeIn 1s ease-in;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
