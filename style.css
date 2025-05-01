@@ -35,26 +35,44 @@ body {
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease-out forwards;
+  border: 2px solid transparent;
+  background-image: linear-gradient(145deg, #FF5F6D, #FFC371); 
+  background-clip: padding-box;
 }
 
 /* Header */
 header {
   text-align: center;
   margin-bottom: 40px;
+  position: relative;
 }
 header h1 {
   font-size: 3rem;
   background: linear-gradient(90deg, #FF5F6D, #FFC371); /* Gradient Text */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
 }
+header h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #FFC371;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  animation: underline 1s ease-out forwards;
+}
+
 header p {
   font-size: 1.2rem;
   color: #fff;
   font-weight: 300;
 }
 
-/* Sections */
+/* Section Styles */
 .resume-section {
   margin-bottom: 30px;
 }
@@ -64,6 +82,8 @@ header p {
   border-bottom: 3px solid #FFC371;
   margin-bottom: 15px;
   padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .resume-section p, .resume-section li {
   font-size: 1rem;
@@ -78,26 +98,43 @@ header p {
   padding: 0;
 }
 .skills li {
-  background: linear-gradient(145deg, #FF5F6D, #FFC371); /* Gradient for skills */
+  background: linear-gradient(145deg, #FF5F6D, #FFC371);
   padding: 10px 15px;
   border-radius: 12px;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effects for Skills */
+.skills li:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(145deg, #FFC371, #FF5F6D);
 }
 
 /* Volunteer Section */
 .volunteer h3 {
   color: #FF5F6D;
   font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+.volunteer h3:hover {
+  color: #FFC371;
 }
 .volunteer p {
   color: #fff;
   font-size: 1rem;
   line-height: 1.5;
+  transition: color 0.3s ease;
+}
+.volunteer p:hover {
+  color: #FFC371;
 }
 
-/* Animations */
+/* Animation */
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -106,6 +143,11 @@ header p {
 @keyframes pulseBG {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
+}
+
+@keyframes underline {
+  0% { transform: scaleX(0); transform-origin: bottom left; }
+  100% { transform: scaleX(1); transform-origin: bottom right; }
 }
 
 .fade-in {
@@ -118,5 +160,34 @@ header p {
 .delay-4 { animation-delay: 2s; }
 .delay-5 { animation-delay: 2.5s; }
 
+/* Contact Section */
+.contact-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+.contact-links a {
+  color: #FFC371;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact-links a:hover {
+  color: #FF5F6D;
+  transform: scale(1.1);
+}
+
 /* Responsive */
-@media (max-width:
+@media (max-width: 600px) {
+  .resume-container {
+    padding: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .skills li {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
