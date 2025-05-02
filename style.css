@@ -1,11 +1,12 @@
 :root {
-  --primary-gradient: linear-gradient(135deg, #5f72be, #9bafd9); /* Soft blue to light violet */
-  --secondary-gradient: linear-gradient(145deg, #43cea2, #185a9d); /* Teal to deep blue */
-  --highlight-gradient: linear-gradient(145deg, #6a11cb, #2575fc); /* Purple to bright blue */
-  --text-highlight: #9bafd9;
-  --section-border: #43cea2;
-  --text-color: #e0f7fa;
-  --header-text: #ffffff;
+  --gradient-main: linear-gradient(135deg, #1e3c72, #2a5298); /* deep blue gradient */
+  --gradient-secondary: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* dark cool blend */
+  --gradient-accent: linear-gradient(135deg, #4776e6, #8e54e9); /* blue to purple accent */
+  --highlight-color: #8bd3dd; /* light icy teal */
+  --text-color: #e6f1ff;
+  --section-border: #4776e6;
+  --hover-color: #8e54e9;
+  --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* Reset and Base */
@@ -16,7 +17,7 @@
 }
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: var(--primary-gradient);
+  background: var(--gradient-main);
   color: var(--text-color);
   min-height: 100vh;
   overflow-x: hidden;
@@ -30,7 +31,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--secondary-gradient);
+  background: var(--gradient-secondary);
   z-index: -1;
   animation: pulseBG 10s ease-in-out infinite;
 }
@@ -39,14 +40,14 @@ body {
 .resume-container {
   max-width: 800px;
   margin: 60px auto;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   animation: fadeIn 1s ease-out forwards;
   border: 2px solid transparent;
-  background-image: var(--secondary-gradient);
+  background-image: var(--gradient-secondary);
   background-clip: padding-box;
 }
 
@@ -57,7 +58,7 @@ header {
 }
 header h1 {
   font-size: 3rem;
-  background: var(--highlight-gradient);
+  background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -69,14 +70,14 @@ header h1::after {
   left: 0;
   width: 100%;
   height: 3px;
-  background: var(--text-highlight);
+  background: var(--highlight-color);
   transform: scaleX(0);
   transform-origin: bottom right;
   animation: underline 1s ease-out forwards;
 }
 header p {
   font-size: 1.2rem;
-  color: var(--header-text);
+  color: var(--text-color);
   font-weight: 300;
 }
 
@@ -86,7 +87,7 @@ header p {
 }
 .resume-section h2 {
   font-size: 1.8rem;
-  color: #6a11cb;
+  color: var(--highlight-color);
   border-bottom: 3px solid var(--section-border);
   margin-bottom: 15px;
   padding-bottom: 5px;
@@ -108,7 +109,7 @@ header p {
   padding: 0;
 }
 .skills li {
-  background: var(--highlight-gradient);
+  background: var(--gradient-accent);
   padding: 10px 15px;
   border-radius: 12px;
   color: white;
@@ -120,17 +121,17 @@ header p {
 .skills li:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  background: linear-gradient(145deg, #2575fc, #6a11cb);
+  background: linear-gradient(145deg, #8e54e9, #4776e6);
 }
 
 /* Volunteer Section */
 .volunteer h3 {
-  color: #6a11cb;
+  color: #8bd3dd;
   font-size: 1.4rem;
   transition: color 0.3s ease;
 }
 .volunteer h3:hover {
-  color: var(--text-highlight);
+  color: var(--highlight-color);
 }
 .volunteer p {
   color: var(--text-color);
@@ -139,7 +140,7 @@ header p {
   transition: color 0.3s ease;
 }
 .volunteer p:hover {
-  color: var(--text-highlight);
+  color: var(--highlight-color);
 }
 
 /* Contact Section */
@@ -149,7 +150,53 @@ header p {
   margin-top: 20px;
 }
 .contact-links a {
-  color: var(--text-highlight);
+  color: var(--highlight-color);
   text-decoration: none;
   font-size: 1.2rem;
-  font
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact-links a:hover {
+  color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseBG {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes underline {
+  0% { transform: scaleX(0); transform-origin: bottom left; }
+  100% { transform: scaleX(1); transform-origin: bottom right; }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2s; }
+.delay-5 { animation-delay: 2.5s; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .resume-container {
+    padding: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .skills li {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
