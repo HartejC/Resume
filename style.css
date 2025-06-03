@@ -9,13 +9,14 @@ body {
 
 
 header {
-    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    background: linear-gradient(135deg, #1CD8D2, #93EDC7);
     color: #fff;
     text-align: center;
     padding: 50px 0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
 }
+
 
 
 @keyframes fadeIn {
